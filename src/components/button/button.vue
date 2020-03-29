@@ -1,5 +1,5 @@
 <template>
-  <button class="ml-button" :class="btnClass">
+  <button class="ml-button" :class="btnClass" @click="handleClick">
     <slot></slot>
   </button>
 </template>
@@ -30,6 +30,9 @@ export default {
       ];
     },
   },
+  methods: {
+    handleClick() {},
+  },
 };
 </script>
 <style lang="scss">
@@ -44,6 +47,9 @@ export default {
   }
   &--primary {
     background-color: $color-primary;
+  }
+  &--danger {
+    background-color: $color-danger;
   }
   &--disabled {
     background-color: $color_disabled;
