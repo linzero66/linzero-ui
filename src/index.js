@@ -1,6 +1,5 @@
 import "./styles/index.scss";
 import * as components from "./entry";
-console.log(window);
 
 const install = function (Vue) {
   Object.keys(components).forEach((key) => {

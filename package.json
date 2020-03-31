@@ -8,6 +8,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "start-storybook",
     "lint": "pretty-quick --staged && eslint --ext .js,.vue src",
+    "build:com": "webpack --mode production --config build/webpack.component.js",
     "build:storybook": "build-storybook -c .storybook -o dist"
   },
   "repository": {
