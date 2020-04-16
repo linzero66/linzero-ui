@@ -1,13 +1,17 @@
 <template>
-  <button class="ml-button" :class="btnClass" @click="handleClick">
-    <slot></slot>
-  </button>
+  <input
+    class="ml-input"
+    :class="btnClass"
+    v-model="valueText"
+    @change="handleChange"
+  />
 </template>
 <script>
-const prefix = "ml-button";
+const prefix = "ml-input";
 export default {
-  name: "MlButton",
+  name: "MlInput",
   props: {
+    value: [String, Number],
     type: {
       type: String,
       default: "primary",
@@ -21,6 +25,11 @@ export default {
       default: false,
     },
   },
+  data() {
+    return {
+      valueText: "",
+    };
+  },
   computed: {
     btnClass() {
       return [
@@ -30,15 +39,21 @@ export default {
       ];
     },
   },
+  watch: {
+    value(val) {
+      this.valueText = val;
+    },
+  },
   methods: {
-    handleClick(event) {
+    handleChange(event) {
       console.log(event);
-      this.$emit("click", event);
+      this.$emit("change", event.target.value);
+      this.$emit("update:value", event.target.value);
     },
   },
 };
 </script>
 <style lang="scss">
 @import "../../styles/variables/index";
-@import "./button.scss";
+@import "./input.scss";
 </style>
